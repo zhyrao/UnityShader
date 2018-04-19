@@ -19,7 +19,7 @@ CG code 包含有**Surface Shader** 和 **Vertex/Fragment Shader**，其中 Surf
 
 ##### Components 组件
  **1.Properties**
->      &emsp;&emsp;Properties
+ >  &emsp;&emsp;Properties
         &emsp;&emsp;{
             &emsp;&emsp;&emsp;&emsp;_Color("Main Color", Color) = (1,1,1,1)
             &emsp;&emsp;&emsp;&emsp;_MainTex("Main Texture", 2D) = white{}
