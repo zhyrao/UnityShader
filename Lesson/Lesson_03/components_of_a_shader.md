@@ -19,7 +19,7 @@ CG code 包含有**Surface Shader** 和 **Vertex/Fragment Shader**，其中 Surf
 
 ##### Components 组件
  **1.Properties**
-        &emsp;&emsp;Properties
+>      &emsp;&emsp;Properties
         &emsp;&emsp;{
             &emsp;&emsp;&emsp;&emsp;_Color("Main Color", Color) = (1,1,1,1)
             &emsp;&emsp;&emsp;&emsp;_MainTex("Main Texture", 2D) = white{}
@@ -27,22 +27,22 @@ CG code 包含有**Surface Shader** 和 **Vertex/Fragment Shader**，其中 Surf
         &emsp;&emsp;}
 
 **2.SubShader**
-&emsp;&emsp;subshader是为了shader支持不同硬件来编写的，unity会使用与硬件兼容的第一个subshader。如果所有的subshader都与硬件兼容则最后使用Fallback shader绘制。Subshader会与硬件兼容例如：metal, gles, gles3,xbox360等等。
-&emsp;&emsp; *[#pragma onlyrenderer metal]*
+>&emsp;&emsp;subshader是为了shader支持不同硬件来编写的，unity会使用与硬件兼容的第一个subshader。如果所有的subshader都与硬件兼容则最后使用Fallback shader绘制。Subshader会与硬件兼容例如：metal, gles, gles3,xbox360等等。
+>&emsp;&emsp; *[#pragma onlyrenderer metal]*
 
 **3.Pass**
-&emsp;&emsp;Render Passes.
+>&emsp;&emsp;Render Passes.
 
 **4.Vertex-Shader Input**
-&emsp;&emsp;vertex的相关信息：position, normal, color等。
+>&emsp;&emsp;vertex的相关信息：position, normal, color等。
 
 **5.Vertex Shader**
-&emsp;&emsp;顶点着色器
+>&emsp;&emsp;顶点着色器
 
 **6.Vertex-Shader Output**
-&emsp;&emsp;经过顶点shader变换后输出的顶点信息内容
+>&emsp;&emsp;经过顶点shader变换后输出的顶点信息内容
 
 **7.Pixel/Fragment Shader**
-&emsp;&emsp;像素/片元着色器
+>&emsp;&emsp;像素/片元着色器
 
 ![完整图片](https://github.com/zhyrao/UnityShader/blob/master/Lesson/Lesson_03/Slide_03/slide_04.png?raw=true)
