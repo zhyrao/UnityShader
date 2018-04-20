@@ -11,6 +11,7 @@ Shader"ShaderDev/BareBone"
 	// SubShader 
 	SubShader
 	{	
+		Tags {"Quene" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
 		// 通道
 		Pass
 		{
