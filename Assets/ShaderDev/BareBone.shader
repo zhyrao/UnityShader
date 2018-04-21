@@ -12,9 +12,11 @@ Shader"ShaderDev/BareBone"
 	SubShader
 	{	
 		Tags {"Quene" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
+		Blend SrcAlpha OneMinusSrcAlpha
 		// 通道
 		Pass
 		{
+
 			CGPROGRAM
 			#pragma vertex vert 
 			#pragma fragment frag 
