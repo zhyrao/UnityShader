@@ -51,7 +51,7 @@ Shader"ShaderDev/03SquareRoot"
 			{
 				float4 col =  tex2D(_MainTex, o.texCoord) * _Color;
 				//col.a = o.texCoord.x;
-				col.a = sqrt(o.texCoord.x);
+				col.a = sin(o.texCoord.x * 50);
 				return col;
 			}
 
