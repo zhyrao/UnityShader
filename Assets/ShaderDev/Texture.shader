@@ -13,6 +13,7 @@ Shader"ShaderDev/01Texture Mapping"
 	SubShader
 	{	
 		Tags {"Quene" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
+		Blend  SrcAlpha OneMinusSrcAlpha 
 		// 通道
 		Pass
 		{
