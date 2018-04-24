@@ -77,9 +77,10 @@ Shader"ShaderDev/08CircleFadeEdges"
 			{
 				float circle = pow((uv.y - center.y), 2) + pow((uv.x - center.x), 2);
 				float radiusSqr = pow(radius,2);
-				if (circle < radiusSqr)
-					return smoothstep(radiusSqr, radiusSqr - feather, circle);
-				return 0;
+				// if (circle < radiusSqr)
+				// 	return smoothstep(radiusSqr, radiusSqr - feather, circle);
+				// return 0;
+				return smoothstep(radiusSqr, radiusSqr - feather, circle);
 			}
 
 			half4 frag(vertexOutput o): COLOR
