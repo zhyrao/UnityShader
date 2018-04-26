@@ -53,7 +53,7 @@ Shader"ShaderDev/12NormalMapping"
 				float2 texCoord:TEXCOORD0;
 
 				// 4.添加TBN信息
-				float4 normalTexCoord:TEXCOORD4;
+				float2 normalTexCoord:TEXCOORD4;
 				float4 normalWorld : TEXCOORD1;
 				float4 tangentWorld:TEXCOORD2;
 				float3 binormalWorld:TEXCOORD3;
@@ -95,6 +95,8 @@ Shader"ShaderDev/12NormalMapping"
 					// 这个原理是向量中各个分量的平方和的开根号等于这个向量的长度
 					// normalVal.z = sqrt(1 - pow(normalVal.a, 2), pow(normalVal.g));
 					// normalVal.z = sqrt(1 - dot(normalVal, normalVal));
+					return normalVal;
+				#endif
 			}
 
 			half4 frag(vertexOutput o): COLOR
