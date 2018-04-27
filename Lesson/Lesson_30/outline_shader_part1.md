@@ -39,15 +39,14 @@
 
 >1. Rotation X matrix
 
->![Rotation X Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
+>>![Rotation X Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
 
 >2. Rotation Y matrix
-
-![Rotation Y Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%200%20%26%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%5C%20-%5Csin%5Ctheta%20%26%200%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
+>![Rotation Y Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%200%20%26%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%5C%20-%5Csin%5Ctheta%20%26%200%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
 
 >3. Rotation Z matrix
 
-![Rotation Z Matrix](http://latex.codecogs.com/gif.latex?%24%24%20%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%20%26%200%5C%5C%5C%20%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%20%24%24)
+>![Rotation Z Matrix](http://latex.codecogs.com/gif.latex?%24%24%20%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%20%26%200%5C%5C%5C%20%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%20%24%24)
 
 ---
 现在我们来看看这个outline shader的顺序:
