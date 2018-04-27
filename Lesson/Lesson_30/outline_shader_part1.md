@@ -37,13 +37,15 @@
 旋转矩阵
 >旋转矩阵和上面的两个矩阵有所不同，旋转的时候，每次都是绕一个轴旋转。
 
-1. Rotation X matrix
+>1. Rotation X matrix
 
 >![Rotation X Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
-2. Rotation Y matrix
+
+>2. Rotation Y matrix
 
 ![Rotation Y Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%200%20%26%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%5C%20-%5Csin%5Ctheta%20%26%200%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
-3. Rotation Z matrix
+
+>3. Rotation Z matrix
 
 ![Rotation Z Matrix](http://latex.codecogs.com/gif.latex?%24%24%20%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%20%26%200%5C%5C%5C%20%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%20%24%24)
 
@@ -52,9 +54,9 @@
 >1. 创建Scale Matrix：
 
 ![Outline Scale Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%7Bmatrix%7D%201&plus;outline_width%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%201&plus;outline_width%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201&plus;outline_width%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
- 2. 将object space vertex和这个缩放矩阵相乘
- 3. 将得到的缩放的结果与MVP相乘
- 4. fragment shader中将每个像素都返回Outline Color.
- 5. 在pass2中，正常渲染原始的模型。
+>2. 将object space vertex和这个缩放矩阵相乘
+>3. 将得到的缩放的结果与MVP相乘
+>4. fragment shader中将每个像素都返回Outline Color.
+>5. 在pass2中，正常渲染原始的模型。
 
 下节中我们将看看具体如何实现。
