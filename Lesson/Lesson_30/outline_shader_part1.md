@@ -16,12 +16,12 @@
 3. Scale
 
 ---
-######我们来分别看看这3个矩阵的数学形式上的表现：
+ 我们来分别看看这3个矩阵的数学形式上的表现：
 ---
-首先，我们来看看单位矩阵(Identity Matrix)
+首先，我们来看看单位矩阵(Identity Matrix) :
 ![Indentity Matrix](http://latex.codecogs.com/gif.latex?Identity%20Matrix%20%3D%20%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D)
 ---
-在单位矩阵的基础上来看看translate matrix：
+在单位矩阵的基础上来看看translate matrix： 
 ![Translation Matrix](http://latex.codecogs.com/gif.latex?Translate%20Matrix%20%3D%20%5Cleft%5B%20%5Cbegin%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%20x%5C%5C%5C%200%20%26%201%20%26%200%20%26%20y%5C%5C%5C%200%20%26%200%20%26%201%20%26%20z%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D)
  >在移动矩阵中，x/y/z分量分别表示了移动的位移向量.![Formula](http://latex.codecogs.com/gif.latex?Translation%20matrix%20%5Ctimes%20Object%20Matrix%20%3D%20Translated%20Object%20Matrix)
 
