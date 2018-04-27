@@ -16,42 +16,19 @@
 2. Rotation
 3. Scale
 
-我们来分别看看这3个矩阵的数学形式上的表现：
+---
+######我们来分别看看这3个矩阵的数学形式上的表现：
 ---
 首先，我们来看看单位矩阵(Identity Matrix)
-$$Identity Matrix = 
-\left[
-\begin {matrix}
-1 & 0 & 0 & 0\\\
-0 & 1 & 0 & 0\\\
-0 & 0 & 1 & 0 \\\
-0 & 0 & 0 & 1
- \end{matrix} \right]
- $$
+![Indentity Matrix](http://latex.codecogs.com/gif.latex?Identity%20Matrix%20%3D%20%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D)
 ---
 在单位矩阵的基础上来看看translate matrix：
-$$Translate Matrix = 
-\left[
-\begin{matrix}
-1 & 0 & 0 & x\\\
-0 & 1 & 0 & y\\\
-0 & 0 & 1 & z \\\
-0 & 0 & 0 & 1
-\end{matrix}
- \right]$$
- >在移动矩阵中，x/y/z分量分别表示了移动的位移向量。$$Translation matrix \times Object Matrix = Translated Object Matrix$$
+![Translation Matrix](http://latex.codecogs.com/gif.latex?Translate%20Matrix%20%3D%20%5Cleft%5B%20%5Cbegin%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%20x%5C%5C%5C%200%20%26%201%20%26%200%20%26%20y%5C%5C%5C%200%20%26%200%20%26%201%20%26%20z%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D)
+ >在移动矩阵中，x/y/z分量分别表示了移动的位移向量.![Formula](http://latex.codecogs.com/gif.latex?Translation%20matrix%20%5Ctimes%20Object%20Matrix%20%3D%20Translated%20Object%20Matrix)
 
  ---
  缩放矩阵
-$$Scale Matrix = 
-\left[
-\begin{matrix}
-x & 0 & 0 & 0\\\
-0 & y & 0 & 0\\\
-0 & 0 & z& 0 \\\
-0 & 0 & 0 & 1
-\end{matrix}
- \right]$$
+![Scale Matrix](http://latex.codecogs.com/gif.latex?%24%24Scale%20Matrix%20%3D%20%5Cleft%5B%20%5Cbegin%7Bmatrix%7D%20x%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%20y%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%20z%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
  > x/y/z值就是在各个轴上面的缩放量
  > 
 ---
@@ -59,43 +36,16 @@ x & 0 & 0 & 0\\\
 >旋转矩阵和上面的两个矩阵有所不同，旋转的时候，每次都是绕一个轴旋转。
 
 1. Rotation X matrix
->$$\left[
-\begin {matrix}
-1 & 0 & 0 & 0\\\
-0 & \cos\theta & -\sin\theta & 0\\\
-0 &\sin\theta & \cos\theta  & 0 \\\
-0 & 0 & 0 & 1
- \end{matrix} \right]$$
+>![Rotation X Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%201%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
 2. Rotation Y matrix
-$$\left[
-\begin {matrix}
- \cos\theta & 0 &\sin\theta & 0\\\
-0 & 1 & 0 & 0\\\
--\sin\theta & 0 & \cos\theta & 0 \\\
-0 & 0 & 0 & 1
- \end{matrix} \right]$$
+![Rotation Y Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%200%20%26%5Csin%5Ctheta%20%26%200%5C%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%5C%20-%5Csin%5Ctheta%20%26%200%20%26%20%5Ccos%5Ctheta%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
 3. Rotation Z matrix
-$$ 
-\left[
-\begin {matrix}
- \cos\theta  & -\sin\theta & 0 & 0\\\
-\sin\theta &  \cos\theta  & 0 & 0\\\
-0 & 0 & 1 & 0 \\\
-0 & 0 & 0 & 1
- \end{matrix} \right]
- $$
+![Rotation Z Matrix](http://latex.codecogs.com/gif.latex?%24%24%20%5Cleft%5B%20%5Cbegin%20%7Bmatrix%7D%20%5Ccos%5Ctheta%20%26%20-%5Csin%5Ctheta%20%26%200%20%26%200%5C%5C%5C%20%5Csin%5Ctheta%20%26%20%5Ccos%5Ctheta%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%20%24%24)
 
 ---
 现在我们来看看这个outline shader的顺序:
 >1. 创建Scale Matrix：
-$$\left[
-\begin{matrix}
-1+outline_width & 0 & 0 & 0\\\
-0 & 1+outline_width & 0 & 0\\\
-0 & 0 & 1+outline_width& 0 \\\
-0 & 0 & 0 & 1
-\end{matrix}
- \right]$$
+![Outline Scale Matrix](http://latex.codecogs.com/gif.latex?%24%24%5Cleft%5B%20%5Cbegin%7Bmatrix%7D%201&plus;outline_width%20%26%200%20%26%200%20%26%200%5C%5C%5C%200%20%26%201&plus;outline_width%20%26%200%20%26%200%5C%5C%5C%200%20%26%200%20%26%201&plus;outline_width%26%200%20%5C%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bmatrix%7D%20%5Cright%5D%24%24)
  2. 将object space vertex和这个缩放矩阵相乘
  3. 将得到的缩放的结果与MVP相乘
  4. fragment shader中将每个像素都返回Outline Color.
