@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 #### Outline Shader(Part1)
 在本节中，我们来了解一下outline shader 的原理。
 >outline shader的表现就是在原本的物体外围添加一个额外的物体的形状的描边。它能够使得这个物体更加的具有吸引力。可以通过outline shader控制这个描边的宽度和颜色。
