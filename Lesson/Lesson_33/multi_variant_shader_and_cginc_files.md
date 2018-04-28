@@ -3,9 +3,9 @@
 >CG include的文件类似于库的概念，这个文件能够在不同的shader中被共用。
 
 **GUI Option/Custom UI drawers**
->我们将使用我们学习过的法线shader作为例子，其中我们可以使用两种选择来绘制： 
-1.使用法线贴图纹理
-2. 使用fragment shader提供的插值。
+>我们将使用我们学习过的法线shader作为例子，其中我们可以使用两种选择来绘制:  
+>1. 使用法线贴图纹理  
+>2. 使用fragment shader提供的插值。
 
 我们来看看怎么来创建自定义的UI面板内容 
 ***
