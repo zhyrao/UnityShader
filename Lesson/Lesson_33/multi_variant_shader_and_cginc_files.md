@@ -16,7 +16,7 @@
         //[KeywordEnum(on,off)]
         //_UseNormalMap("Use Normal Map?", float) = 0
 ``` 
-2. Enum: 这个关键字也创建了一个float类型的下拉菜单。在这里可以定义ON/OFF，甚至可以定义数字。
+>2. Enum: 这个关键字也创建了一个float类型的下拉菜单。在这里可以定义ON/OFF，甚至可以定义数字。
 ```
         Enum(ON,1,OFF)
 ```
