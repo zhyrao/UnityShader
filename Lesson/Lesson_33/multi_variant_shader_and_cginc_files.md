@@ -2,6 +2,7 @@
 在接下来的几个章节中，我们将了解material property的材质UI接口，也被称为Custom UI Drawers。我们将学习如何在unity shader中增加一个接口，使得我们能够在材质面板上选择关/闭来控制shader中的代码块。也将学习怎么来编写扩展名为.cginc的CG include文件。
 >CG include的文件类似于库的概念，这个文件能够在不同的shader中被共用。
 
+
 #####GUI Option/Custom UI drawers 
 
 为了更好的理解GUI上的选项，我们将使用我们学习过的法线shader作为例子，其中我们可以使用两种选择来绘制:  
@@ -61,6 +62,7 @@
 而multi_compile和shader_feature之间唯一的不同的是，shader_feature会仅仅编译那些已经在场景或者游戏中选中的选项。multi_compile会编译所有的不同的shader的变种，不管是不是已经被使用了。所以为了提升性能，我们一般会使用shader_feature这个关键字来使用shader变种。
 
 ##### CG-include files(.cginc)
+
 cg文件是类似于其他编程语言中使用的额外的库或者命名空间内容。
 >例如在python中使用的import
 >或者在c#中使用using
