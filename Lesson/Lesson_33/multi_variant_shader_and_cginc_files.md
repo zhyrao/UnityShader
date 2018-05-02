@@ -3,7 +3,7 @@
 >CG include的文件类似于库的概念，这个文件能够在不同的shader中被共用。
 
 
-#####GUI Option/Custom UI drawers 
+##### GUI Option/Custom UI drawers 
 
 为了更好的理解GUI上的选项，我们将使用我们学习过的法线shader作为例子，其中我们可以使用两种选择来绘制:  
 >1. 使用法线贴图纹理  
@@ -52,6 +52,7 @@
 >3. 使用#if #else #endif来划分不同的代码块
 
 **multi_compile & shader_feature的区别：**
+
 当我们编写了一个可以有控制选项的shader，这样的shader称为Multi Variant Shader(或者the shader with multiple program variants)。multi variant shader会在编译的时候根据不同定义的选项会编译多次。
 ```
     // 例如：我们定义了2种不同的选项和2种不同的选项内容
