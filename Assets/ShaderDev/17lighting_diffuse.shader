@@ -40,7 +40,7 @@ Shader"ShaderDev/17Lighting_Diffuse"
 			uniform float4 _NormalMap_ST;
 
 			uniform float _Diffuse;
-			uniform float3 _LightColor0;
+			uniform float4 _LightColor0;
 
 			struct vertexInput
 			{
@@ -85,7 +85,9 @@ Shader"ShaderDev/17Lighting_Diffuse"
 				o.normalWorld = float4(normalize(mul(i.normal.xyz, (float3x3)unity_WorldToObject)).xyz, 1);
 				
 				#if _USENORMALMAP_ON
-					o.tangentWorld = normalize(mul(i.tangent, unity_ObjectToWorld));
+					o.tangentWorld = normalize(mul(i.tangent, transpose(unity_ObjectToWorld)));
+					//o.tangentWorld = normalize(mul(i.tangent, (unity_ObjectToWorld)));
+					//o.tangentWorld = normalize(mul(unity_ObjectToWorld, i.tangent));
 					o.binormalWorld = normalize(cross(o.normalWorld, o.tangentWorld) * i.tangent.w);
 					o.normalTexCoord = (i.texCoord.xy * _NormalMap_ST.xy) + _NormalMap_ST.zw;
 				#endif
