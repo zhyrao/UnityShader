@@ -1,10 +1,7 @@
 ﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
-
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader"ShaderDev/18Lighting_Specular"
@@ -18,14 +15,17 @@ Shader"ShaderDev/18Lighting_Specular"
 
 		_Diffuse("Diffuse %", Range(0,1)) = 1 
 		[KeywordEnum(Off, Vert, Frag)] _Lighting("Lighting Mode", float) = 0
+
+		// 高光图
 		_SpecularMap("Specular Map", 2D) = "black"{}
+		// 高光系数
 		_SpecularFactor("Specular %", Range(0,1)) = 1
+		// 高光强度
 		_SpecularPower("Specular Power", float) = 100
 	}
 
 	SubShader
 	{	
-		// 重要的是ForwardBase
 		Tags {"Quene" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
 		Blend  SrcAlpha OneMinusSrcAlpha 
 		// 通道
@@ -74,6 +74,7 @@ Shader"ShaderDev/18Lighting_Specular"
 					float3 binormalWorld:TEXCOORD3;
 					float2 normalTexCoord:TEXCOORD4;
 				#endif
+				// 存储顶点的世界坐标
 				float4 worldPos :TEXCOORD5;
 				// 增加一个在vertex计算的颜色值
 				#if _LIGHTING_VERT
@@ -81,19 +82,7 @@ Shader"ShaderDev/18Lighting_Specular"
 				#endif
 			};
 
-			// 根据diffuse reflection 公式计算光照值
-			float3 DiffuseLambert(float3 lightColor, float diffuseVal, float attenuation, float3 normalVal, float3 lightDir)
-			{
-				return lightColor * diffuseVal * attenuation * max(0, dot(normalVal, lightDir));
-			}
-
-			// 计算specular reflection光照值
-			float3 SpecularBlinnPhong(float3 specularColor, float3 lightDir, float3 worldSpaceViewDir, float3 normalDir, float specularFactor, float attenuation, float specularPower)
-			{
-				float3 halfwayDir = normalize(lightDir + worldSpaceViewDir);
-				return specularColor * specularFactor *attenuation * pow(max(0, dot(normalDir, halfwayDir)), specularPower);
-			}
-
+			
 			vertexOutput vert(vertexInput i)
 			{
 				vertexOutput o;
@@ -117,9 +106,13 @@ Shader"ShaderDev/18Lighting_Specular"
 
 					//float4 specularColor = tex2D(_SpecularMap, o.texCoord.xy);
 					float4 specularColor = tex2Dlod(_SpecularMap, float4(o.texCoord.xy,0,0));
-					float3 worldPos = mul(unity_ObjectToWorld, i.vertex);
-					float3 worldSpaceViewDir = normalize(_WorldSpaceLightPos0.xyz - worldPos);
-					float3 specularValue = SpecularBlinnPhong(specularColor.rgb, lightDir, worldSpaceViewDir, o.normalWorld.xyz, _SpecularFactor, attenuation, _SpecularPower);
+
+					// 世界顶点位置
+					// float3 worldPos = mul(unity_ObjectToWorld, i.vertex);
+
+					// 摄像机位置减去顶点位置的单位向量
+					float3 worldSpaceViewDir = normalize(_WorldSpaceCameraPos - o.worldPos);
+					float3 specularValue = SpecularBlinnPhong(o.normalWorld, lightDir, worldSpaceViewDir, specularColor.rgb, _SpecularFactor, attenuation, _SpecularPower);
 					
 					o.surfaceColor = float4(diffuseCol + specularValue, 1);
 				#endif
@@ -144,8 +137,8 @@ Shader"ShaderDev/18Lighting_Specular"
 
 					float4 specularColor = tex2D(_SpecularMap, o.texCoord.xy);
 					//float3 worldPos = mul(unity_ObjectToWorld, i.vertex);
-					float3 worldSpaceViewDir = normalize(_WorldSpaceLightPos0.xyz - o.worldPos);
-					float3 specularValue = SpecularBlinnPhong(specularColor.rgb, lightDir, worldSpaceViewDir, o.normalWorld.xyz, _SpecularFactor, attenuation, _SpecularPower);
+					float3 worldSpaceViewDir = normalize(_WorldSpaceCameraPos - o.worldPos);
+					float3 specularValue = SpecularBlinnPhong(normalAtWorld, lightDir, worldSpaceViewDir, specularColor.rgb, _SpecularFactor, attenuation, _SpecularPower);
 
 					return half4(diffuseCol + specularValue, 1);
 				#elif _LIGHTING_VERT

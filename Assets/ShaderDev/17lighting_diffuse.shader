@@ -70,11 +70,11 @@ Shader"ShaderDev/17Lighting_Diffuse"
 				#endif
 			};
 
-			// 根据diffuse reflection 公式计算光照值
-			float3 DiffuseLambert(float3 lightColor, float diffuseVal, float attenuation, float3 normalVal, float3 lightDir)
-			{
-				return lightColor * diffuseVal * attenuation * max(0, dot(normalVal, lightDir));
-			}
+			//// 根据diffuse reflection 公式计算光照值
+			//float3 DiffuseLambert(float3 lightColor, float diffuseVal, float attenuation, float3 normalVal, float3 lightDir)
+			//{
+			//	return lightColor * diffuseVal * attenuation * max(0, dot(normalVal, lightDir));
+			//}
 
 			vertexOutput vert(vertexInput i)
 			{

@@ -1,6 +1,19 @@
 #ifndef CVGLIGHTING_CGINC
 #define CVGLIGHTING_CGINC
 
+// 根据diffuse reflection 公式计算光照值
+float3 DiffuseLambert(float3 lightColor, float diffuseVal, float attenuation, float3 normalVal, float3 lightDir)
+{
+	return lightColor * diffuseVal * attenuation * max(0, dot(normalVal, lightDir));
+}
+
+// 计算specular reflection光照值
+float3 SpecularBlinnPhong(float3 normalDir,  float3 lightDir, float3 worldSpaceViewDir, float3 specularColor, float specularFactor, float attenuation, float specularPower)
+{
+	float3 halfwayDir = normalize(lightDir + worldSpaceViewDir);
+	return specularColor * specularFactor *attenuation * pow(max(0, dot(normalDir, halfwayDir)), specularPower);
+}
+
 float3 normalFromColor(float4 colorVal)
 	{
 		// 如果不是DTX压缩
