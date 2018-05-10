@@ -147,12 +147,12 @@ Shader"ShaderDev/20Lighting_All"
 
 					//return half4(diffuseCol + specularValue, 1);
 					// 结果再加上ambientColor
+					float3 texColor = tex2D(_MainTex, o.texCoord.xy);
 					#if _AMBIENT_ON
 						float3 ambientColor = _AmbientFactor * UNITY_LIGHTMODEL_AMBIENT;
-						float3 texColor = tex2D(_MainTex, o.texCoord.xy);
 						return half4((diffuseCol + specularValue + ambientColor) * texColor * _Color, 1);
 					#else
-						return half4((diffuseCol + specularValue) * _Color, 1);
+						return half4((diffuseCol + specularValue)  * texColor * _Color, 1);
 					#endif
 
 				#elif _LIGHTING_VERT
