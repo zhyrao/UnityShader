@@ -11,7 +11,7 @@ Unity 也有一个特殊的队列系统称为 **Render Quene**。
 >在Render Quene中，我们可以给每个物体不同的标记顺序，这个标记是从0到5000之间的数字。被标记为0的物体将会被首先绘制，相应的标记为5000的物体将会被最后绘制。 
 >
 
-####在Shader中有个关键字 **Quene**:
+#### 在Shader中有个关键字 **Quene**:
 ---
 **"Background"**
 > 取值范围是[0 - 1499]，其中默认值是1000。可以在shader中增减数值来改变默认值。例如"Quene" = "Backgroud + 1"，这里的Quene值就是1001；“Quene" = "Background - 10"，那么这里的 Quene值就是990。
