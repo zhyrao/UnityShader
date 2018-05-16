@@ -17,3 +17,17 @@
 - Reflection ON/OFF
 
 > 如果基本光照是打开的, 我们将基础光照的结果和基于图像反射的结果相乘; 如果基本光照是关闭的, 结果光照加上反射光照信息. 
+![basic lighting and environment light](https://github.com/zhyrao/UnityShader/blob/master/Lesson/Lesson_52/Slide_52/Slide_03.png?raw=true)
+
+
+我们也知道在计算光照的过程中我们需要视线的方向, 也就是视线方向向量, 然后基于这个视线方向向量和点的表面法线, 来计算视线基于法线的反射向量. 一旦我们获得到了这个反射方向向量, 我们就可以使用函数texCUBE()来获取环境贴图的像素信息. 
+![reflection dir](https://github.com/zhyrao/UnityShader/blob/master/Lesson/Lesson_52/Slide_52/Slide_05.png?raw=true)
+
+我们也在shader的属性中定义了细节层次系数(表示我们想要多少的细节信息), 使用这个属性的时候我们需要使用另外一个函数texCUBElod(\_cubeMap, float4):  
+> \cubemap是环境贴图, float4(x,y,z,w)中的xyz组成为法线信息, 而w是lod的系数. 其中1代表最高程度的层次细节.  
+
+那么我们是如何得到越来越低的细节信息呢? 我们通过**mip-mapping**来实现的  
+##### Mip-Mapping 
+mip-mapping技术的核心就是贴图纹理缩小原来的倍数(通常是1/2倍)来得到另外一个层次的纹理贴图
+![mipmapping](https://github.com/zhyrao/UnityShader/blob/master/Lesson/Lesson_52/Slide_52/Slide_06.png?raw=true)
+在unity中可以在贴图的属性中打开mip mapping这个控制属性. 这样的话unity就可以预先给我们创建好相关层次的mipmapping
