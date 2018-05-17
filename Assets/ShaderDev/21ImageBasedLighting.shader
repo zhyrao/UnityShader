@@ -25,7 +25,6 @@ Shader"ShaderDev/21ImageBasedLighting"
 		_CubeMap("Cube Map", Cube) = ""{}
 		_Detail("Reflection Detail", Range(1, 9)) = 1.0
 		_ReflectionExposure("HDR Exposure", float) = 1.0
-
 	}
 
 	SubShader
@@ -39,7 +38,6 @@ Shader"ShaderDev/21ImageBasedLighting"
 			Tags{"LightMode" = "ForwardBase"}
 			CGPROGRAM
 			#include "CVGLighting.cginc"
-			#pragma target 3.0
 			#pragma vertex vert 
 			#pragma fragment frag 
 			#pragma shader_feature _USENORMALMAP_ON _USENORMALMAP_OFF
@@ -110,10 +108,11 @@ Shader"ShaderDev/21ImageBasedLighting"
 			vertexOutput vert(vertexInput i)
 			{
 				vertexOutput o;
+				UNITY_INITIALIZE_OUTPUT(vertexOutput, o);
 				o.pos = UnityObjectToClipPos(i.vertex);
 				o.texCoord = (i.texCoord.xy * _MainTex_ST.xy) + _MainTex_ST.zw;
 
-				o.normalWorld = float4(normalize(mul(i.normal.xyz, (float3x3)unity_WorldToObject)).xyz, 1);
+				o.normalWorld = float4(normalize(mul(normalize(i.normal.xyz), (float3x3)unity_WorldToObject)).xyz, i.normal.w);
 				o.worldPos = mul(unity_ObjectToWorld, i.vertex);
 
 				#if _USENORMALMAP_ON
@@ -136,25 +135,33 @@ Shader"ShaderDev/21ImageBasedLighting"
 					float3 specularValue = SpecularBlinnPhong(o.normalWorld, lightDir, worldSpaceViewDir, specularColor.rgb, _SpecularFactor, attenuation, _SpecularPower);
 					float3 texColor = tex2Dlod(_MainTex, float4(o.texCoord.xy,0,0));
 
-					o.surfaceColor = float4((diffuseCol + specularValue) * texColor * _Color, 1);
+					o.surfaceColor = float4(specularValue + diffuseCol * texColor * _Color, 1);
 
 					// 结果再加上ambientColor
 					#if _AMBIENT_ON
 						float3 ambientColor = _AmbientFactor * UNITY_LIGHTMODEL_AMBIENT;
-						o.surfaceColor = float4((o.surfaceColor.rgb + ambientColor) * texColor  * _Color, 1);
+						o.surfaceColor = float4(o.surfaceColor.rgb + ambientColor, 1);
 					#endif
 
 					#if _IBLMODE_REFL						
 						float3 worldReflection = reflect(-worldSpaceViewDir, o.normalWorld.xyz);
 						o.surfaceColor.rgb *= IBLRefl(_CubeMap, _Detail, worldReflection, _ReflectionExposure, _ReflectionFactor);
 					#endif
-				#else 
+				//#elif _LIGHTING_OFF
+				//	//#if _AMBIENT_ON
+				//	//	float3 ambientColor = _AmbientFactor * UNITY_LIGHTMODEL_AMBIENT;
+				//	//	o.surfaceColor.rgb += float4(o.surfaceColor.rgb + ambientColor, 1);
+				//	//#endif
+
+				//	#if _IBLMODE_REFL	
+				//		float3 worldReflection = reflect(-worldSpaceViewDir, o.normalWorld.xyz);
+				//		o.surfaceColor.rgb += IBLRefl(_CubeMap, _Detail, worldReflection, _ReflectionExposure, _ReflectionFactor);
+				//	#endif
+				#else
 					#if _IBLMODE_REFL	
-						o.surfaceColor = (0,0,0,0);
 						float3 worldReflection = reflect(-worldSpaceViewDir, o.normalWorld.xyz);
 						o.surfaceColor.rgb += IBLRefl(_CubeMap, _Detail, worldReflection, _ReflectionExposure, _ReflectionFactor);
 					#endif
-
 				#endif
 				return o;
 			}
@@ -182,8 +189,6 @@ Shader"ShaderDev/21ImageBasedLighting"
 					float3 worldSpaceViewDir = normalize(_WorldSpaceCameraPos - o.worldPos);
 					float3 specularValue = SpecularBlinnPhong(normalAtWorld, lightDir, worldSpaceViewDir, specularColor.rgb, _SpecularFactor, attenuation, _SpecularPower);
 
-					//return half4(diffuseCol + specularValue, 1);
-					// 结果再加上ambientColor
 					float3 texColor = tex2D(_MainTex, o.texCoord.xy);
 
 					finalColor.rgb += specularValue +  diffuseCol * texColor * _Color;
@@ -195,7 +200,7 @@ Shader"ShaderDev/21ImageBasedLighting"
 
 					#if _IBLMODE_REFL
 						float3 worldReflection = reflect(-worldSpaceViewDir, normalAtWorld);
-						finalColor.rgb += IBLRefl(_CubeMap, _Detail, worldReflection, _ReflectionExposure, _ReflectionFactor);
+						finalColor.rgb *= IBLRefl(_CubeMap, _Detail, worldReflection, _ReflectionExposure, _ReflectionFactor);
 					#endif
 
 				#elif _LIGHTING_VERT
@@ -206,7 +211,7 @@ Shader"ShaderDev/21ImageBasedLighting"
 						float3 worldReflection = reflect(-worldSpaceViewDir, normalAtWorld);
 						finalColor.rgb += IBLRefl(_CubeMap, _Detail, worldReflection, _ReflectionExposure, _ReflectionFactor);
 					#endif
-					return half4(normalAtWorld.xyz, 1);
+					//return half4(normalAtWorld.xyz, 1);
 				#endif
 
 				return finalColor;
