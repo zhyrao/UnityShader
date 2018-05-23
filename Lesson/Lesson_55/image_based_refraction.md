@@ -35,3 +35,22 @@
 - ProjL on N = (N dot L) * L 
 - sinθ = 对边/斜边
 - 如果两个向量的方向和长度是相等的, 那么这两个向量相同. 
+
+### SNELL'S LAW
+在理解折射的过程中, 都会接触到一个定律`Snell's Law`(斯涅尔定律), 科学家snell发现了关于光线从一个介质传导到另外一个介质中的定律:  
+![refractivindex](http://latex.codecogs.com/gif.latex?%5Cbg_white%20index_1*sin%5CTheta%20_1%3Dindex_2*sin%5CTheta_2)
+> 其中index1指的是介质1的折射率, θ1指的是入射光线和法线的夹角.  
+> index2指的是介质2的折射率, θ2指的是折射光线和负法线的夹角.
+
+
+### Refract
+![REFRACT](https://github.com/zhyrao/UnityShader/blob/master/Lesson/Lesson_55/Slide_56/Slide_01.png)
+> 如上图所示: 我们已知两种不同的介质, 以及入射光线和入射点的平面法线. 为了方便计算, 都认为它们是向量, 并且是单位向量. 
+
+推导过程省略, 结果如下:  
+
+![formula](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Clarge%20eat%20*%20%5Cvec%7BI%7D%20&plus;%20%5Cvec%20%7BN%7D%20*%20%28%28eta%20*%20cos%5Ctheta_I%29%20-%20%5Csqrt%5B%5D%7B1-eta%5E2%20*%20%281-cos%5E2%5Ctheta_R%29%7D%29)  
+
+其中 eta 表示:   
+
+![eta](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Clarge%20%5Cfrac%7Bindex_I%7D%7Bindex_R%7D)
