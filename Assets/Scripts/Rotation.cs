@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rotation : MonoBehaviour {
 
     private GameObject obj;
+    public float speed = 0.2f;
 	// Use this for initialization
 	void Start () {
         obj = this.gameObject;
@@ -12,6 +13,6 @@ public class Rotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        obj.transform.Rotate(Vector3.up, 1, Space.Self);
+        obj.transform.Rotate(Vector3.up, speed, Space.Self);
 	}
 }
